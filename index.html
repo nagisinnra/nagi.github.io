@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NAGISINNRA — Technology / Linux / Making</title>
+
+<meta name="description"
+      content="NAGISINNRA — Technology, Linux, software and making.">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap');
+
+:root {
+    --bg: #f4f4f2;
+    --fg: #111;
+    --muted: #777;
+    --line: #d8d8d4;
+    --card: #ececea;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family:
+        Inter,
+        "Noto Sans JP",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    overflow-x: hidden;
+}
+
+::selection {
+    background: #111;
+    color: #fff;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 76px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 5vw;
+
+    z-index: 100;
+
+    background: rgba(244,244,242,.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border-bottom: 1px solid rgba(0,0,0,.08);
+}
+
+.logo {
+    text-decoration: none;
+    color: #111;
+
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: .14em;
+}
+
+.logo::before {
+    content: "●";
+    font-size: 7px;
+    margin-right: 9px;
+    vertical-align: middle;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: #666;
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 500;
+
+    transition: color .2s ease;
+}
+
+nav a:hover {
+    color: #000;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+
+    padding:
+        76px 5vw 35px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hero-top {
+    padding-top: 15vh;
+}
+
+.kicker {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .18em;
+
+    color: #777;
+    text-transform: uppercase;
+}
+
+.kicker::before {
+    content: "";
+
+    width: 32px;
+    height: 1px;
+
+    background: #999;
+}
+
+.hero h1 {
+    margin-top: 32px;
+
+    font-size: clamp(70px, 13vw, 190px);
+    line-height: .82;
+
+    letter-spacing: -.085em;
+    font-weight: 800;
+}
+
+.hero h1 span {
+    display: block;
+}
+
+.hero h1 .outline {
+    color: transparent;
+    -webkit-text-stroke: 1.5px #111;
+}
+
+.hero-description {
+    margin-top: 45px;
+
+    max-width: 560px;
+
+    color: #666;
+
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+.hero-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    border-top: 1px solid var(--line);
+
+    padding-top: 18px;
+}
+
+.scroll,
+.coordinates {
+    font-size: 10px;
+    color: #999;
+    letter-spacing: .1em;
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+section {
+    padding: 150px 5vw;
+}
+
+.section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    border-top: 1px solid var(--line);
+
+    padding-top: 18px;
+    margin-bottom: 70px;
+}
+
+.section-number {
+    font-size: 11px;
+    color: #999;
+}
+
+.section-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .18em;
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+
+    gap: 90px;
+}
+
+.about-big {
+    font-size: clamp(38px, 5.5vw, 78px);
+
+    line-height: 1.02;
+    letter-spacing: -.065em;
+    font-weight: 600;
+}
+
+.about-big span {
+    color: transparent;
+    -webkit-text-stroke: 1px #111;
+}
+
+.about-text {
+    max-width: 540px;
+
+    color: #666;
+
+    font-size: 14px;
+    line-height: 2;
+}
+
+.about-text p + p {
+    margin-top: 28px;
+}
+
+
+/* =========================
+   NAGISINNRALINUX
+========================= */
+
+.linux {
+    padding-top: 100px;
+}
+
+.linux-card {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    min-height: 520px;
+
+    border-top: 1px solid #111;
+    border-bottom: 1px solid #111;
+}
+
+.linux-visual {
+    background: #111;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+.linux-visual::before {
+    content: "N";
+
+    position: absolute;
+
+    font-size: 40vw;
+    font-weight: 800;
+
+    line-height: 1;
+
+    color: transparent;
+
+    -webkit-text-stroke: 1px rgba(255,255,255,.13);
+
+    transform: translate(8%, 5%);
+}
+
+.linux-mark {
+    width: 120px;
+    height: 120px;
+
+    border: 1px solid rgba(255,255,255,.7);
+
+    display: grid;
+    place-items: center;
+
+    color: #fff;
+
+    font-size: 34px;
+    font-weight: 700;
+
+    transform: rotate(45deg);
+
+    z-index: 1;
+}
+
+.linux-mark span {
+    transform: rotate(-45deg);
+}
+
+.linux-content {
+    background: var(--card);
+
+    padding: 55px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.linux-label {
+    font-size: 10px;
+    letter-spacing: .16em;
+    color: #888;
+}
+
+.linux-content h2 {
+    font-size: clamp(38px, 5vw, 70px);
+
+    line-height: .92;
+
+    letter-spacing: -.065em;
+}
+
+.linux-content p {
+    max-width: 500px;
+
+    color: #666;
+
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.text-link {
+    width: fit-content;
+
+    color: #111;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    border-bottom: 1px solid #111;
+
+    padding-bottom: 8px;
+
+    transition:
+        opacity .2s,
+        transform .2s;
+}
+
+.text-link:hover {
+    opacity: .55;
+    transform: translateX(5px);
+}
+
+
+/* =========================
+   LINKS
+========================= */
+
+.links {
+    border-top: 1px solid var(--line);
+}
+
+.link-row {
+    display: grid;
+
+    grid-template-columns: 80px 1fr auto;
+
+    align-items: center;
+
+    padding: 28px 0;
+
+    border-bottom: 1px solid var(--line);
+
+    color: #111;
+
+    text-decoration: none;
+
+    transition: padding .25s ease;
+}
+
+.link-row:hover {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.link-number {
+    color: #999;
+    font-size: 11px;
+}
+
+.link-name {
+    font-size: clamp(22px, 3vw, 38px);
+
+    font-weight: 500;
+
+    letter-spacing: -.04em;
+}
+
+.link-arrow {
+    font-size: 18px;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact {
+    min-height: 85vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.contact-title {
+    font-size: clamp(68px, 13vw, 185px);
+
+    line-height: .8;
+
+    letter-spacing: -.085em;
+
+    font-weight: 800;
+}
+
+.contact-title span {
+    color: transparent;
+
+    -webkit-text-stroke: 1px #111;
+}
+
+.contact-mail {
+    width: fit-content;
+
+    color: #111;
+
+    text-decoration: none;
+
+    font-size: clamp(19px, 3vw, 38px);
+
+    letter-spacing: -.04em;
+
+    border-bottom: 1px solid #111;
+
+    padding-bottom: 10px;
+
+    transition: opacity .2s;
+}
+
+.contact-mail:hover {
+    opacity: .5;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    border-top: 1px solid var(--line);
+
+    padding: 28px 5vw;
+
+    display: flex;
+    justify-content: space-between;
+
+    color: #888;
+
+    font-size: 10px;
+
+    letter-spacing: .08em;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+    header {
+        height: 64px;
+        padding: 0 22px;
+    }
+
+    nav {
+        gap: 17px;
+    }
+
+    nav a:nth-child(n+3) {
+        display: none;
+    }
+
+    .hero {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+
+    .hero-top {
+        padding-top: 18vh;
+    }
+
+    .hero h1 {
+        font-size: 22vw;
+    }
+
+    section {
+        padding: 100px 22px;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .linux-card {
+        grid-template-columns: 1fr;
+    }
+
+    .linux-visual {
+        min-height: 340px;
+    }
+
+    .linux-content {
+        min-height: 440px;
+        padding: 35px;
+    }
+
+    .link-row {
+        grid-template-columns: 45px 1fr auto;
+    }
+
+    .contact {
+        min-height: 70vh;
+    }
+
+    footer {
+        padding-left: 22px;
+        padding-right: 22px;
+
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #bbb;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+    <a href="#" class="logo">
+        NAGISINNRA
+    </a>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#linux">Linux</a>
+        <a href="#links">Links</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+</header>
+
+
+<main>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-top">
+
+        <div class="kicker">
+            Independent Developer
+        </div>
+
+        <h1>
+            <span>NAGI</span>
+            <span class="outline">SINNRA</span>
+        </h1>
+
+        <p class="hero-description">
+            Technology, Linux, software and making.
+            <br>
+            自分が欲しいものを、自分でつくる。
+        </p>
+
+    </div>
+
+
+    <div class="hero-bottom">
+
+        <div class="scroll">
+            SCROLL TO EXPLORE ↓
+        </div>
+
+        <div class="coordinates">
+            2026 / NAGISINNRA
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section id="about">
+
+    <div class="section-head">
+
+        <div class="section-number">
+            01
+        </div>
+
+        <div class="section-title">
+            ABOUT
+        </div>
+
+    </div>
+
+
+    <div class="about-grid">
+
+        <div class="about-big">
+
+            Make things.
+            <br>
+            <span>Understand</span> them.
+            <br>
+            Make them
+            <br>
+            better.
+
+        </div>
+
+
+        <div class="about-text">
+
+            <p>
+                Nagisinnra is an independent developer
+                interested in technology, Linux,
+                software, hardware and the web.
+            </p>
+
+            <p>
+                自分が面白いと思ったものを、
+                実際に作ってみる。
+                そして、作りながら考える。
+            </p>
+
+            <p>
+                OSからWebサイトまで、
+                興味を持ったものを
+                自分なりの方法で形にしています。
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     LINUX
+========================= -->
+
+<section class="linux" id="linux">
+
+    <div class="section-head">
+
+        <div class="section-number">
+            02
+        </div>
+
+        <div class="section-title">
+            CURRENTLY BUILDING
+        </div>
+
+    </div>
+
+
+    <div class="linux-card">
+
+
+        <div class="linux-visual">
+
+            <div class="linux-mark">
+                <span>N</span>
+            </div>
+
+        </div>
+
+
+        <div class="linux-content">
+
+            <div class="linux-label">
+                LINUX / OPEN SOURCE
+            </div>
+
+
+            <h2>
+                Nagisinnra<br>
+                Linux
+            </h2>
+
+
+            <p>
+                軽量性と高速性を追求して開発している
+                Linuxディストリビューション。
+                「自分が使いたいOS」を考え、
+                形にしていくプロジェクトです。
+            </p>
+
+
+            <!-- URLを変更してください -->
+
+            <a
+                href="#"
+                class="text-link"
+                onclick="alert('https://nagisinnra.f5.si/'); return false;"
+            >
+                EXPLORE NAGISINNRALINUX →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     LINKS
+========================= -->
+
+<div class="links">
+
+    <!-- ===== LINK 01 ===== -->
+    <a href="https://zenn.dev/nagisinnra"
+       class="link-row"
+       target="_blank">
+
+        <span class="link-number">01</span>
+        <span class="link-name">Zenn</span>
+        <span class="link-arrow">↗</span>
+
+    </a>
+
+
+    <!-- ===== LINK 02 ===== -->
+    <a href="https://github.com/nagisinnra"
+       class="link-row"
+       target="_blank">
+
+        <span class="link-number">02</span>
+        <span class="link-name">GitHub</span>
+        <span class="link-arrow">↗</span>
+
+    </a>
+
+
+    <!-- ===== LINK 03 ===== -->
+    <a href="https://qiita.com/nagi-sinnra"
+       class="link-row"
+       target="_blank">
+
+        <span class="link-number">03</span>
+        <span class="link-name">Qiita</span>
+        <span class="link-arrow">↗</span>
+
+    </a>
+
+
+    <!-- ===== LINK 04 ===== -->
+    <a href="https://hamanet.org/"
+       class="link-row"
+       target="_blank">
+
+        <span class="link-number">04</span>
+        <span class="link-name">hamanet</span>
+        <span class="link-arrow">↗</span>
+
+    </a>
+
+</div>
+
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section class="contact" id="contact">
+
+
+    <div class="section-head">
+
+        <div class="section-number">
+            04
+        </div>
+
+        <div class="section-title">
+            CONTACT
+        </div>
+
+    </div>
+
+
+    <div class="contact-title">
+
+        LET'S
+        <br>
+
+        <span>MAKE</span>
+        <br>
+
+        SOMETHING.
+
+    </div>
+
+
+    <a
+        href="mailto:sinnra.technology@outlook.jp"
+        class="contact-mail"
+    >
+        sinnra.technology@outlook.jp
+    </a>
+
+
+</section>
+
+
+</main>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <span>
+        © 2026 NAGISINNRA
+    </span>
+
+    <span>
+        TECHNOLOGY / LINUX / MAKING
+    </span>
+
+</footer>
+
+
+</body>
+</html>
